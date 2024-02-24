@@ -18,14 +18,15 @@ export const useViewerToken = (hostIdentity: string) => {
                     name?: string;
                 };
 
-                const name = decodedToken.name;
-                const identity = decodedToken.jti;
+                const nameD = decodedToken?.name;
+                const identityD = decodedToken?.sub;
+                // in video he used jti instead of sub
 
-                if (identity) {
-                    setIdentity(identity);
+                if (identityD) {
+                    setIdentity(identityD);
                 }
-                if (name) {
-                    setName(name);
+                if (nameD) {
+                    setName(nameD);
                 }
             } catch {
                 toast.error("Something went wrong");
